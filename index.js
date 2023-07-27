@@ -7,12 +7,16 @@ const cors = require("cors");
 const productsRouter = require("./routes/routeProducts");
 const brandsRouter = require("./routes/routeBrands");
 const categoriesRouter = require("./routes/routeCategories");
+const usersRouter = require("./routes/routeUser");
+const authRouter = require("./routes/routeAuth");
+const cartRouter = require("./routes/routeCart");
+const ordersRouter = require("./routes/routeOrder");
 
 //express app
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(cors({ exposedHeaders: ["X-Total-Count"] }));
 app.use(express.json()); // to parse req.body
 
 app.get("/", (req, res) => {
@@ -22,6 +26,11 @@ app.get("/", (req, res) => {
 app.use("/products", productsRouter.router);
 app.use("/brands", brandsRouter.router);
 app.use("/categories", categoriesRouter.router);
+app.use("/users", usersRouter.router);
+app.use("/auth", authRouter.router);
+app.use("/cart", cartRouter.router);
+app.use("/orders", ordersRouter.router);
+
 // we can also use JWT token for client-only auth
 
 // mongoose.set("strictQuery", true);

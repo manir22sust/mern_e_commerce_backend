@@ -19,10 +19,6 @@ const app = express();
 app.use(cors({ exposedHeaders: ["X-Total-Count"] }));
 app.use(express.json()); // to parse req.body
 
-app.get("/", (req, res) => {
-  res.json({ status: "success" });
-});
-
 app.use("/products", productsRouter.router);
 app.use("/brands", brandsRouter.router);
 app.use("/categories", categoriesRouter.router);

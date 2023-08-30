@@ -27,21 +27,6 @@ app.use("/auth", authRouter.router);
 app.use("/cart", cartRouter.router);
 app.use("/orders", ordersRouter.router);
 
-// we can also use JWT token for client-only auth
-
-// mongoose.set("strictQuery", true);
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     // listen for requests
-//     app.listen(process.env.PORT, () => {
-//       console.log(" connected to db && Listening on port ", process.env.PORT);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
 main().catch((err) => console.log(err));
 
 async function main() {
@@ -50,5 +35,5 @@ async function main() {
 }
 
 app.listen(process.env.PORT, () => {
-  console.log("server started");
+  console.log(" connected to db && Listening on port ", process.env.PORT);
 });
